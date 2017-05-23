@@ -6,6 +6,14 @@
 
 int rename_file(char *path)
 {
+    /*
+     * Rename an HorribleSubs release by checking if it's valid.
+     * Once it's validity has been confirmed, remove the headers
+     * as well as the remaining whitespaces.
+     *
+     * Finally rename accordingly the filename.
+     */
+
     FILE *file;
     file = fopen(path, "w");
 
@@ -24,7 +32,7 @@ int rename_file(char *path)
             if (rename_ret == 0) {
                 printf("New renamed file: %s\n", modified_whitespace_filename);
             } else {
-                fprintf(stderr, "Couldn't rename file.");
+                fprintf(stderr, "Couldn't rename the file.");
                 fclose(file);
                 return (0);
             }
