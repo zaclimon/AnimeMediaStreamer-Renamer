@@ -10,3 +10,5 @@ renamer.o: renamer.c renamer_directory.h renamer_file.h
 	gcc -c renamer.c
 hsrenamer: renamer.o renamer_directory.o renamer_file.o
 	gcc renamer.o renamer_directory.o renamer_file.o -o hsrenamer
+clean:
+	rm -f renamer.o renamer_directory.o renamer_file.o hsrenamer
