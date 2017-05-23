@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <dirent.h>
 #include <unistd.h>
+#include <limits.h>
 #include "renamer_directory.h"
 #include "renamer_file.h"
 
@@ -9,7 +10,7 @@ int rename_directory(char *path)
 {
     DIR *d;
     struct dirent *dir;
-    char realfilename[256];
+    char realfilename[PATH_MAX];
 
     d = opendir(path);
 

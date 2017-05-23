@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <libgen.h>
+#include <limits.h>
 #include "renamer_file.h"
 
 int rename_file(char *path)
@@ -19,8 +20,8 @@ int rename_file(char *path)
 
     if (file) {
         char *filename = basename(path);
-        char modified_header_filename[256] = "";
-        char modified_whitespace_filename[256] = "";
+        char modified_header_filename[PATH_MAX];
+        char modified_whitespace_filename[PATH_MAX];
 
         if (is_file_horriblesubs(filename)) {
             printf("Renaming %s...\n", filename);
