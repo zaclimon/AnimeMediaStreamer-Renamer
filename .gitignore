@@ -1,0 +1,8 @@
+# The compiled binary
+hsrenamer
+
+# .txt files
+*.txt
+
+# .o files
+*.o

@@ -1,0 +1,1 @@
+int rename_directory(char *path);
