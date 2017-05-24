@@ -5,9 +5,9 @@
 
 void show_help()
 {
-    puts("Usage: horriblesubsrename [OPTION]...");
-    puts("       horriblesubsrename [OPTION]... [FILE]...");
-    puts("       horriblesubsrename [OPTION]... [DIRECTORY]...");
+    puts("Usage: hsrenamer [OPTION]...");
+    puts("       hsrenamer [OPTION]... [FILE]...");
+    puts("       hsrenamer [OPTION]... [DIRECTORY]...");
     puts("Renames HorribleSubs supplied releases for easy importation.");
     puts("");
     puts("  -d, --directory     Renames a given directory");
