@@ -35,21 +35,21 @@ int rename_file(char *path)
             } else {
                 fprintf(stderr, "Couldn't rename the file.");
                 fclose(file);
-                return (0);
+                return (1);
             }
 
         } else {
             fprintf(stderr, "%s is not a valid HorribleSubs release\n", filename);
             fclose(file);
-            return (0);
+            return (1);
         }
 
     fclose(file);
-    return (1);
+    return (0);
 
     } else {
         fprintf(stderr, "Couldn't access %s", path);
-        return (0);
+        return (1);
     }
 }
 

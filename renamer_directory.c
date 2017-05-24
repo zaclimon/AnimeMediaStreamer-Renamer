@@ -33,9 +33,9 @@ int rename_directory(char *path)
         }
     } else {
         fprintf(stderr, "Path not valid: %s\n", path);
-        return (0);
+        return (1);
     }
 
     closedir(d);
-    return (1);
+    return (0);
 }
