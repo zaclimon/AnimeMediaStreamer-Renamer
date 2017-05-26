@@ -20,13 +20,13 @@ int rename_file(char *path)
 
     if (file) {
         char *filename = basename(path);
-        char modified_header_filename[PATH_MAX];
-        char modified_whitespace_filename[PATH_MAX];
+        char *modified_header_filename;
+        char *modified_whitespace_filename;
 
         if (is_file_horriblesubs(filename)) {
             printf("Renaming %s...\n", filename);
-            remove_headers(modified_header_filename, filename);
-            remove_whitespaces(modified_whitespace_filename, modified_header_filename);
+            modified_header_filename = remove_headers(filename);
+            modified_whitespace_filename = remove_whitespaces(modified_header_filename);
 
             int rename_ret = rename(filename, modified_whitespace_filename);
 
@@ -34,6 +34,8 @@ int rename_file(char *path)
                 printf("New renamed file: %s\n", modified_whitespace_filename);
             } else {
                 fprintf(stderr, "Couldn't rename the file.");
+                free(modified_header_filename);
+                free(modified_whitespace_filename);
                 fclose(file);
                 return (1);
             }
@@ -44,6 +46,8 @@ int rename_file(char *path)
             return (1);
         }
 
+    free(modified_header_filename);
+    free(modified_whitespace_filename);
     fclose(file);
     return (0);
 
@@ -84,13 +88,14 @@ int is_file_horriblesubs(char *filename)
 
 }
 
-void remove_headers(char *dst_filename, char *src_filename)
+char *remove_headers(char *src_filename)
 {
     /* 
      * Verify/Remove the headers by creating a temporary string based
      * on the original filename.
     */
     
+    char dst_filename[PATH_MAX] = "";
     int is_in_header;
     int char_count = strlen(src_filename);
     int dst_index = 0;
@@ -115,9 +120,10 @@ void remove_headers(char *dst_filename, char *src_filename)
             is_in_header = 0;
         }
     }
+    return (strdup(dst_filename));
 }
 
-void remove_whitespaces(char *dst_filename, char *src_filename)
+char *remove_whitespaces(char *src_filename)
 {
      /* 
      * Remove any trailing whitespaces. In this case, it would be
@@ -129,6 +135,7 @@ void remove_whitespaces(char *dst_filename, char *src_filename)
     */
 
     char *extension = strrchr(src_filename, '.');
+    char dst_filename[PATH_MAX] = "";
     int char_count = strlen(src_filename);
     int dst_index = 0;
     int ext_index = extension - src_filename;
@@ -141,5 +148,6 @@ void remove_whitespaces(char *dst_filename, char *src_filename)
             dst_index++;
         }
     }
-}
 
+    return (strdup(dst_filename));
+}
