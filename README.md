@@ -12,7 +12,7 @@ Prerequisites
 How to compile
 ==============
 1. Download the source:
-``` git clone https://github.com/zaclimon/HorribleSubs-Renamer```
+``` git clone https://github.com/zaclimon/AnimeMediaStreamer-Renamer```
 2. Compile the source:
 ``` make amsrenamer```
 3. Profit!
