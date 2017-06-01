@@ -1,7 +1,7 @@
-HorribleSubs Renamer (hsrenamer)
+Anime Media Streamer Renamer (amsrenamer)
 ================================
 
-hsrenamer is an simple utility to rename HorribleSubs releases for easy import into media streamers. (Plex)
+amsrenamer is an simple utility to rename given anime releases for easy import into media streamers.
 
 Prerequisites
 =============
@@ -14,16 +14,17 @@ How to compile
 1. Download the source:
 ``` git clone https://github.com/zaclimon/HorribleSubs-Renamer```
 2. Compile the source:
-``` make hsrenamer```
+``` make amsrenamer```
 3. Profit!
 
 Usage
 =====
 You can use it to rename separately an HorribleSubs release like so:
-```hsrenamer -f "path-to-file.mkv"```
+```amsrenamer -f "path-to-file.mkv"```
+```amsrenamer -f "path-to-file.mp4"```
 
 Or you can use it to rename a directory containing a ton of releases as well like so:
-```hsrenamer -d "/path/to/dem/releases"```
+```amsrenamer -d "/path/to/dem/releases"```
 
 License
 =======
